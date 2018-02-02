@@ -44,5 +44,5 @@ some notes:
 - it might be better to replace a_dot_x() with BLAS dgemv() for dense matrix
 - similarly, better to replace x_dot_y() with BLAS ddot()
 - I did some large asymmetric sparse matrix tests by using this, it looks that sometimes it does not converge...(espicially for large matrix)
-  for symmetric case, it seems to converge.
+  for symmetric case, it seems to converge even in the large case.
   need to study the condition and how to improve(or find another iterative method for asymmetric case)
