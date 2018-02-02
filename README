@@ -1,6 +1,6 @@
 asymmetric linear system solver by using BiCGSTAB method.
 this is for study of finite element method.
-BiCGSTAB method is an interative method, so it is suitable for parallelization, MPI version is possible.(though I have not implemented yet)
+BiCGSTAB method is an iterative method, so it is suitable for parallelization, MPI version is possible.(though I have not implemented yet)
 this time just used OpenMP for simpleness.
 
 $ module load intel
