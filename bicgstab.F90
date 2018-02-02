@@ -244,7 +244,7 @@ program main
   call system_clock(c(1), c_rate, c_max)
   call bicgstab(size, a, x, b)
   call system_clock(c(2))
-  time = (c(2)-c(1))/c_rate
+  time = 1.0d0*(c(2)-c(1))/c_rate
   write(6, *) "time[s]:", time
 
   write(6, *) "solution vector:"
