@@ -39,3 +39,7 @@ $ ./a.out
    1.25000E-01
  check the result: calc res = b - A*x
  residual:  7.364386412590295E-016
+
+some notes:
+- it might be better to replace a_dot_x() with BLAS dgemv() for dense matrix
+- similarly, better to replace x_dot_y() with BLAS ddot()
