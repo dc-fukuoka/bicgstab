@@ -1,7 +1,7 @@
 module params
   implicit none
   integer,parameter :: dp = kind(1.0d0)
-  integer,parameter :: size = 8
+  integer,parameter :: size = 1024
 
   integer,parameter :: iter_max = 10000
   real(dp),parameter :: tol = 1.0d-10
@@ -31,13 +31,17 @@ contains
     !$omp end do
     !$omp end parallel
 
-    a(2, 1) = 2.0d0
-    a(2, 3) = 3.0d0
-    a(1, 2) = -1.0d0
-    a(3, 4) = 5.0d0
-    a(7, 6) = 8.0d0
-    a(5, 7) = -2.0d0
+    a(size, 1)    = 2.0d0
+    a(1,    size) = -2.0d0
+    a(7,    2)    = 3.0d0
+    a(2,    7)    = -3.0d0
+    a(3,    6)    = 4.0d0
+    a(6,    3)    = -4.0d0
+    a(4,    5)    = 5.0d0
+    a(5,    4)    = -5.0d0
 
+    write(6, *) "size:", size
+#ifdef _DEBUG
     write(6, *) "matrix A:"
     do i = 1, size
        write(6,'(8(1pe14.5))') (a(i, j), j = 1, size)
@@ -48,7 +52,7 @@ contains
     do i = 1, size
        write(6, '(1pe14.5)') b(i)
     end do
-    
+#endif
   end subroutine init
 
   ! ax = A*x
@@ -246,12 +250,12 @@ program main
   call system_clock(c(2))
   time = 1.0d0*(c(2)-c(1))/c_rate
   write(6, *) "time[s]:", time
-
+#ifdef _DEBUG
   write(6, *) "solution vector:"
   do i = 1, size
      write(6, '(1pe14.5)') x(i)
   end do
-
+#endif
   write(6, *) "check the result: calc res = b - A*x"
   call b_minus_ax(size, a, x, b, r)
   call x_dot_y(size, r, r, res)
