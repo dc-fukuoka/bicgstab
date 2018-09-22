@@ -22,7 +22,7 @@ $ OMP_NUM_THREADS=16 KMP_AFFINITY=compact ./a.out
 
 * with diagonal preconditioning:
 
-./a.out.precond
+$ ./a.out.precond
  size:        1024
  BiCGSTAB method converged.
  iter, res:           8  5.889016570610078E-015 <---- only 8 iterations
