@@ -1,7 +1,4 @@
 asymmetric linear system solver by using BiCGSTAB method with diagonal preconditioning.
-this is for study of finite element method.
-BiCGSTAB method is an iterative method, so it is suitable for parallelization, MPI version is possible.(though I have not implemented yet)
-this time just used OpenMP for simpleness.
 
 $ make
 $ OMP_NUM_THREADS=1 ./a.out
@@ -29,10 +26,3 @@ $ ./a.out.precond
  time[s]:  6.900000000000001E-002
  check the result: calc res = b - A*x
  residual:  1.196561173929648E-012
-
-some notes:
-- it might be better to replace a_dot_x() with BLAS dgemv() for dense matrix
-- similarly, better to replace x_dot_y() with BLAS ddot()
-- I did some large asymmetric sparse matrix tests by using this, it looks that sometimes it does not converge...(espicially for large matrix)
-  for symmetric case, it seems to converge even in the large case.
-  need to study the condition and how to improve(or find another iterative method for asymmetric case)
