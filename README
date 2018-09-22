@@ -20,6 +20,16 @@ $ OMP_NUM_THREADS=16 KMP_AFFINITY=compact ./a.out
  check the result: calc res = b - A*x
  residual:  7.729346016224966E-011
 
+* with diagonal preconditioning:
+
+./a.out.precond
+ size:        1024
+ BiCGSTAB method converged.
+ iter, res:           8  5.889016570610078E-015 <---- only 8 iterations
+ time[s]:  6.900000000000001E-002
+ check the result: calc res = b - A*x
+ residual:  1.196561173929648E-012
+
 some notes:
 - it might be better to replace a_dot_x() with BLAS dgemv() for dense matrix
 - similarly, better to replace x_dot_y() with BLAS ddot()
